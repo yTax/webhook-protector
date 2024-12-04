@@ -11,13 +11,13 @@ limiter = Limiter(get_remote_address, app=app)
 DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL") # dont hard code this in, use an envoriment variable.
 SECRET_KEY = os.getenv("WEBHOOK_SECRET_KEY") # dont hard code this in, use an envoriment variable.
 
-@app.route('/', methods=['POST'])
-@limiter.limit("5 per minute") # set your limit per IP, this lib is comically easy to use just type it in 
+@app.route('/', methods=['POST']) # only accepts POST requests so ppl cant delete ur webhook
+@limiter.limit("5 per minute") # set your limit per IP, this lib is comically easy to use, just type it in 
 def fowardWebhook():
     
     # checks if the key u used is in the auth header
     auth_header = request.headers.get('Authorization')
-    if (not auth_header or auth_header != f"Bearer {SECRET_KEY}"):
+    if (not auth_header or auth_header != f"{SECRET_KEY}"):
         return jsonify({"error": "Unauthorized"}), 403
 
     # send the received payload to ur webhook
@@ -41,4 +41,4 @@ def ratelimit_error(e):
     return jsonify(error="ratelimit exceeded", message=str(e.description)), 429
 
 if (__name__ == '__main__'):
-    app.run(debug=True, host='0.0.0.0', port=5000) # always keep debug=False when you deploy this
+    app.run(debug=False, host='0.0.0.0', port=5000) # always keep debug=False when you deploy this
