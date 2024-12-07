@@ -43,7 +43,7 @@ To understand how to use this read [Getting Started](#-〢-getting-started)
 
 # 🚀 〢 Getting Started
 
-You can now choose if you want to install this on [Render](#-〢-installation-on-render) (Lifetime free hosting).
+The easiest way to install this for free is on [Render](#-〢-installation-on-render) (Lifetime free hosting).
 
 If you want to install it [on your own server](#Installation-Local) you can simply download the files. Dont forget to edit main.py to setup your webhook and key or to hook it up to a .env file!
 
