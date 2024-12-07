@@ -56,7 +56,7 @@ If you want to install it [on your own server](#Installation-Local) you can simp
 ![Dashboard Connection](./imgs/brave_EeIydoHMyu.png)
 4. Write `python main.py` as your start up command. Select Free as the instance type.
 ![Dashboard Settings](./imgs/brave_DmJC3FehXn.png)
-5. Setup the environment variables like this:
+5. Click Enviroment and setup the environment variables like this:
 ![Env Variables](./imgs/brave_qXOvpxkczR.png)
 ```
 DISCORD_WEBHOOK_URL : Write your webhook here.
