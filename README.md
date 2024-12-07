@@ -77,7 +77,7 @@ SECRET_KEY : Write your key here, this is the key you will use to send requests 
 
 
 # 📄 〢 Documentation
-There are 2 example scripts on this repository that show you how to POST to your API and the code is very well commented.
+There are 2 example scripts on this repository that show you how to POST to your API and the `main.py` code is very well commented.
 If you have any questions feel free to open an issue or contact me!
 
 ### Example on how to send a message containing files: 
