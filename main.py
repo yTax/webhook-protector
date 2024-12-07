@@ -17,6 +17,10 @@ def fowardWebhook():
     
     # checks if the key u used is in the auth header
     auth_header = request.headers.get('Authorization')
+    
+    if (auth_header == "KeepAlive"):
+        return jsonify({"Keeping instance Alive"}), 200
+    
     if (not auth_header or auth_header != f"{SECRET_KEY}"):
         return jsonify({"error": "Unauthorized"}), 403
 
