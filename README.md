@@ -53,20 +53,26 @@ Or if you want to install it [on your server or local machine](#Installation-Loc
 1. Setup a [Render](https://dashboard.render.com/register) account.
 2. [Fork](https://github.com/yTax/webhook-protector/fork) this repository (DONT FORGET TO MAKE THE REPOSITORY PRIVATE AND CHANGE THE KEY INSIDE MAIN.PY!!!).
 3. Go to the [Dashboard](https://dashboard.render.com/select-repo?type=web) and click connect github.
+![Dashboard Connection](./imgs/brave_EeIydoHMyu.png)
 4. Write `python main.py` as your start up command. Select Free as the instance type.
+![Dashboard Settings](./imgs/brave_DmJC3FehXn.png)
 5. Setup the environment variables like this:
+![Env Variables](./imgs/brave_qXOvpxkczR.png)
 ```
 DISCORD_WEBHOOK_URL : Your_Webhook
 SECRET_KEY : your_secret_key
 ```
 6. Press "Deploy Web Service"
 7. After your service is deployed grab it's URL on the dashboard, it should look something like: `https://webhook-protectorbzx4y.onrender.com`
-7. Now we need to keep our Render server alive 24/7, to do this make an account on [CronJob](https://console.cron-job.org/signup)
-8. After creating your account, go to the [Dashboard](https://console.cron-job.org/dashboard) and click Create CronJob.
-9. Type whatever you want for the title and set your Render URL as the CrobJob URL.
-10. Set the execution schedule to every 5 minutes.
-11. Go into the Advanced tab and set a header with the key `Authorization` and value `KeepAlive`, finally change your request method to `POST`.
-12. Done! Your webhook is now protected. The cronjob will keep the render server alive 24/7.
+![Webserver URL](./imgs/brave_a2JIbRmVAS.png)
+8. Now we need to keep our Render server alive 24/7, to do this make an account on [CronJob](https://console.cron-job.org/signup)
+9. After creating your account, go to the [Dashboard](https://console.cron-job.org/dashboard) and click Create CronJob.
+![Create Cron](./imgs/brave_oOmhRq9Y4d.png)
+10. Type whatever you want for the title and set your Render URL as the CrobJob URL.
+11. Set the execution schedule to every 5 minutes.
+12. Go into the Advanced tab and set a header with the key `Authorization` and value `KeepAlive`, finally change your request method to `POST`.
+![Advanced Tab](./imgs/brave_RNInQpWJfh.png)
+13. Done! Your webhook is now protected. The cronjob will keep the render server alive 24/7.
 
 
 
