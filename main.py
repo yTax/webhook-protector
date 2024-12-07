@@ -19,7 +19,7 @@ def fowardWebhook():
     auth_header = request.headers.get('Authorization')
     
     if (auth_header == "KeepAlive"):
-        return jsonify({"Keeping instance Alive"}), 200
+        return jsonify({"status": "Keeping instance Alive"}), 200
     
     if (not auth_header or auth_header != f"{SECRET_KEY}"):
         return jsonify({"error": "Unauthorized"}), 403
@@ -45,4 +45,4 @@ def ratelimit_error(e):
     return jsonify(error="ratelimit exceeded", message=str(e.description)), 429
 
 if (__name__ == '__main__'):
-    app.run(debug=False, host='0.0.0.0', port=5000) # always keep debug=False when you deploy this
+    app.run(debug=True, host='0.0.0.0', port=5000) # always keep debug=False when you deploy this
