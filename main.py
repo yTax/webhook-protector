@@ -9,7 +9,7 @@ app = Flask(__name__)
 limiter = Limiter(get_remote_address, app=app)
 
 DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL") # dont hard code this in, use an envoriment variable.
-SECRET_KEY = os.getenv("SECRET_KEY") # dont hard code this in, use an envoriment variable.
+SECRET_KEY = os.getenv("WEBHOOK_SECRET_KEY") # dont hard code this in, use an envoriment variable.
 
 @app.route('/', methods=['POST']) # only accepts POST requests so ppl cant delete ur webhook
 @limiter.limit("5 per minute") # set your limit per IP, this lib is comically easy to use, just type it in 
@@ -24,7 +24,21 @@ def fowardWebhook():
     if (not auth_header or auth_header != f"{SECRET_KEY}"):
         return jsonify({"error": "Unauthorized"}), 403
 
-    # send the received payload to ur webhook
+
+    # file payloads
+    if 'file' in request.files:
+        file = request.files['file']
+        
+        try:
+            
+            files = {"file": (file.filename, file.read(), file.mimetype)}
+
+            # forward to discord webhook
+            response = requests.post(DISCORD_WEBHOOK_URL, files=files)
+        except requests.exceptions.RequestException as e:
+            return jsonify({"error": "Failed to forward file to Discord"}), 500
+
+    # send the received json payload to ur webhook
     try:
         payload = request.json
         if (not payload): # if the sent request is empty return an error
