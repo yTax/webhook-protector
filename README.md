@@ -35,7 +35,7 @@
 
 # ⭐ 〢 Usage
 
-This is a very simple script written in python that you can host anywhere, it has a very simple purpose which is ratelimitting and protecting your discord webhook from being deleted, this script will also be compatible with any other webhook integration.
+This is a very simple script written in python that you can host anywhere, it has a very simple purpose which is ratelimitting and protecting your discord webhook from being deleted, this script will also be compatible with any other webhook integration if you make some small tweaks to it.
 It is implemented in a very basic way using Flask.  
 
 To understand how to use this read [Getting Started](#-〢-getting-started)
