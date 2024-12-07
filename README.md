@@ -59,8 +59,8 @@ Or if you want to install it [on your server or local machine](#Installation-Loc
 5. Setup the environment variables like this:
 ![Env Variables](./imgs/brave_qXOvpxkczR.png)
 ```
-DISCORD_WEBHOOK_URL : Your_Webhook
-SECRET_KEY : your_secret_key
+DISCORD_WEBHOOK_URL : write ur webhook here
+SECRET_KEY : write ur key here
 ```
 6. Press "Deploy Web Service"
 7. After your service is deployed grab it's URL on the dashboard, it should look something like: `https://webhook-protectorbzx4y.onrender.com`
