@@ -8,7 +8,7 @@
   <h1 align="center">🔐 {Webhook Protector} 🔐</h3>
 
   <p align="center">
-    A simply way to avoid hard-coding your webhooks or risking a deletion.
+    A simple way to avoid hard-coding your webhooks or risking a deletion.
     <br />
     <a href="https://github.com/yTax/webhook-protector/issues/new">Request Feature or report a bug</a>
   </p>
