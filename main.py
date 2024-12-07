@@ -9,7 +9,7 @@ app = Flask(__name__)
 limiter = Limiter(get_remote_address, app=app)
 
 DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL") # dont hard code this in, use an envoriment variable.
-SECRET_KEY = os.getenv("WEBHOOK_SECRET_KEY") # dont hard code this in, use an envoriment variable.
+SECRET_KEY = os.getenv("SECRET_KEY") # dont hard code this in, use an envoriment variable.
 
 @app.route('/', methods=['POST']) # only accepts POST requests so ppl cant delete ur webhook
 @limiter.limit("5 per minute") # set your limit per IP, this lib is comically easy to use, just type it in 
