@@ -45,13 +45,13 @@ To understand how to use this read [Getting Started](#-〢-getting-started)
 
 You can now choose if you want to install this on [Render](#-〢-installation-on-render) (Lifetime free hosting).
 
-Or if you want to install it [on your server or local machine](#Installation-Local). By simply downloading the source files.
+If you want to install it [on your own server](#Installation-Local) you can simply download the files. Dont forget to edit main.py to setup your webhook and key or to hook it up to a .env file!
 
 
 # 💻 〢 Installation on Render
 
 1. Setup a [Render](https://dashboard.render.com/register) account.
-2. [Fork](https://github.com/yTax/webhook-protector/fork) this repository (DONT FORGET TO MAKE THE REPOSITORY PRIVATE AND CHANGE THE KEY INSIDE MAIN.PY!!!).
+2. [Fork](https://github.com/yTax/webhook-protector/fork) this repository (YOU SHOULD MAKE THE REPOSITORY PRIVATE!!!).
 3. Go to the [Dashboard](https://dashboard.render.com/select-repo?type=web) and click connect github.
 ![Dashboard Connection](./imgs/brave_EeIydoHMyu.png)
 4. Write `python main.py` as your start up command. Select Free as the instance type.
@@ -59,8 +59,8 @@ Or if you want to install it [on your server or local machine](#Installation-Loc
 5. Setup the environment variables like this:
 ![Env Variables](./imgs/brave_qXOvpxkczR.png)
 ```
-DISCORD_WEBHOOK_URL : write ur webhook here
-SECRET_KEY : write ur key here
+DISCORD_WEBHOOK_URL : Write your webhook here.
+SECRET_KEY : Write your key here, this is the key you will use to send requests to your render API. It can be whatever you want.
 ```
 6. Press "Deploy Web Service"
 7. After your service is deployed grab it's URL on the dashboard, it should look something like: `https://webhook-protectorbzx4y.onrender.com`
