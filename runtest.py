@@ -27,7 +27,9 @@ def send_request():
         print(f"Error: {response.status_code}, {response.json()}")
 
 
+send_request()
 
-for _ in range(6):  # sends 6 requests and sleeps for 500ms between each, the server should ratelimit u after the 5th
-    send_request()
-    time.sleep(0.5)
+# rate limit test:
+# for _ in range(6):  # sends 6 requests and sleeps for 500ms between each, the server should ratelimit u after the 5th
+#     send_request()
+#     time.sleep(0.5)

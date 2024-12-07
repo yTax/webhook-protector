@@ -66,6 +66,8 @@ SECRET_KEY : your_secret_key
 9. Type whatever you want for the title and set your Render URL as the CrobJob URL.
 10. Set the execution schedule to every 5 minutes.
 11. Go into the Advanced tab and set a header with the key `Authorization` and value `KeepAlive`, finally change your request method to `POST`.
+12. Done! Your webhook is now protected. The cronjob will keep the render server alive 24/7.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+You can find a snippet that shows how you can incorporate this API into your code inside `runtest.py`.
+
 
