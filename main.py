@@ -41,20 +41,28 @@ def fowardWebhook():
     elif ((content_type.startswith("multipart/form-data")) or content_type == ("multipart/form-data")):
         # file payloads, we do this by checking if the user POSTed with the content type multipart/form-data (which is the standard for sending files over discord webhooks)
         # the json should be under payload_json, as is standard for discord webhooks that use this content-type header
+        # your request would look something like this: 
+        # file1=file.zip <- a file you want to send
+        # file2=file2.png <- a file you want to send 
+        # payload_json={"embeds":[{"title":"test"}]} <- your discord webhook json payload 
+        # a curl command example could be: 
+        # curl -F 'payload_json={"username": "test", "content": "hello"}' -F "file1=file.zip" -F "file2=file2.png" YOURWEBHOOK
+        # you can find a python example script in SendJsonAndFiles.py
+        # NOTE: curl and python requests automatically specify 'Content-Type':'multipart/form-data' , if you specify this manually make sure to include ALL the flags needed.
         try:
             payload_json = request.form.get("payload_json")
             files = {
             key: (file.filename, file.stream, file.mimetype)
-            for key, file in request.files.items()} # theres probably better ways to do this, but essentially this will just grab all the files sent in the multpart form and place em on a dict
+            for key, file in request.files.items()} # theres probably better ways to do this, but essentially this will just grab all the files sent in the multpart form and parse them into a dict using the format discord accepts.
 
-            data = {"payload_json": payload_json}
-            response = requests.post(DISCORD_WEBHOOK_URL, data=data, files=files)
-            response.raise_for_status()
-            return jsonify({"status": "Files and payload forwarded successfully"}), 200
+            data = {"payload_json": payload_json} # prepping for the request
+            response = requests.post(DISCORD_WEBHOOK_URL, data=data, files=files) # post request
+            response.raise_for_status() # in case anything errors raie an exception
+            return jsonify({"status": "Files and payload forwarded successfully"}), 200 # valid upload
         except requests.exceptions.RequestException as e:
-            return jsonify({"error": "Unknown error, possibly Discord's fault."}), 500
+            return jsonify({"error": "Unknown error, possibly Discord's fault."}), 500 # generic message for when shit goes wrong, return the exception if you're debugging
     else:
-        return jsonify({"error": "Unsupported content type"}), 415
+        return jsonify({"error": "Unsupported content type"}), 415 # if the sent content type doesnt fall under "application/json" or "multipart/form-data" return this, you can obviously add more content types if you need to, but for discord webhooks this is enough
 
 # returns a ratelimit response
 @app.errorhandler(429)
