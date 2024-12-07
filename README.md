@@ -51,7 +51,7 @@ If you want to install it [on your own server](#Installation-Local) you can simp
 # 💻 〢 Installation on Render
 
 1. Setup a [Render](https://dashboard.render.com/register) account.
-2. [Fork](https://github.com/yTax/webhook-protector/fork) this repository (YOU SHOULD MAKE THE REPOSITORY PRIVATE!!!).
+2. [Fork](https://github.com/yTax/webhook-protector/fork) this repository.
 3. Go to the [Dashboard](https://dashboard.render.com/select-repo?type=web) and click connect github.
 ![Dashboard Connection](./imgs/brave_EeIydoHMyu.png)
 4. Write `python main.py` as your start up command. Select Free as the instance type.
