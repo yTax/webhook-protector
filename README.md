@@ -68,6 +68,57 @@ SECRET_KEY : your_secret_key
 11. Go into the Advanced tab and set a header with the key `Authorization` and value `KeepAlive`, finally change your request method to `POST`.
 12. Done! Your webhook is now protected. The cronjob will keep the render server alive 24/7.
 
-You can find a snippet that shows how you can incorporate this API into your code inside `runtest.py`.
 
 
+# 📄 〢 Documentation
+There are 2 example scripts on this repository that show you how to POST to your API and the code is very well commented.
+If you have any questions feel free to open an issue or contact me!
+
+### Example on how to send a message containing files: 
+`This script is inside SendJsonAndFiles.py`
+
+```py
+import requests
+
+url = "render URL" # URL TO YOUR RENDER
+
+
+payload = {
+    "payload_json": '{"username": "test", "content": "hello"}' # your JSON payload, like an embed or a message, this is obviously optional if u just want to send a file
+}
+
+# Files to send
+with open(r"PATH TO FILE ") as file: # here we use r"" to prevent python from fucking up the string
+    files = {"file1": file} 
+
+    # header with ur key
+    headers = {"Authorization": "yourkey",}
+    response = requests.post(url, data=payload, files=files, headers=headers)
+
+    print(response.text)
+```
+
+### Example on how to send a message: 
+`This script is inside SendJson.py`
+
+```py
+import requests
+
+url = "your URL" # URL TO YOUR RENDER
+
+
+payload = {"username": "test", "content": "hello"} # your JSON payload
+
+
+
+# header with ur key
+headers = {"Authorization": "yourkey",}
+response = requests.post(url, json=payload, headers=headers)
+
+print(response.text)
+```
+
+# 📋 〢 To-do List
+
+- [ ] Possibly make a web-ui for this and an account system.
+- [ ] Feel free to give any suggestions! 
